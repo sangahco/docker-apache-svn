@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+
+  svn:
+    build: svn
+    volumes: 
+    - ${SVN_ROOT_FOLDER}:/mnt/svn/
+    - ${SVN_HTPASSWD_PATH}:/etc/apache2/.htaccess:ro
+    ports:
+    - "${HTTP_PORT}:80"
