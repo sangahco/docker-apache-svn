@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+
+  sync:
+    image: sangah/apache-svn
+    volumes: 
+    - ${SVN_ROOT_FOLDER}:/mnt/svn/
+    - ${SVN_HTPASSWD_PATH}:/etc/apache2/.htaccess:ro
+    - $PWD/tmp:/mnt/tmp/
+    command: svnsync sync --steal-lock file:///mnt/svn/repos
+    restart: "on-failure"
