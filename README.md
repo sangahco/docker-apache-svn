@@ -29,6 +29,7 @@ Take this source from git repository with the following commands:
 
 ### Run the server:
 
+    $ docker-compose pull
     $ docker-compose up
 
 
