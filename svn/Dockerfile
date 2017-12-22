@@ -14,6 +14,8 @@ RUN set -e && \
     cp /usr/local/src/.htaccess /etc/apache2/.htaccess && \
     /usr/sbin/a2enmod dav_svn && \
     /usr/sbin/a2enmod authz_svn && \
+    /usr/sbin/a2dismod mpm_event && \
+    /usr/sbin/a2enmod mpm_worker && \
     /usr/sbin/a2ensite svn && \
     # cleaning
     rm -rf /var/lib/apt/lists/* && \
