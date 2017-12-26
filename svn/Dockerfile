@@ -3,13 +3,15 @@ LABEL maintainer="Emanuele Disco <emanuele.disco@gmail.com>"
 
 COPY . /usr/local/src/
 
+ENV SVNROOT=/mnt/svn
+
 RUN set -e && \
 
     # installing required packages
     apt-get update && apt-get install -y \
         subversion \
         libapache2-mod-svn && \
-    mkdir -p /mnt/svn && \
+    mkdir -p ${SVNROOT} && \
     cp /usr/local/src/svn.conf /etc/apache2/sites-available/svn.conf && \
     cp /usr/local/src/.htaccess /etc/apache2/.htaccess && \
     /usr/sbin/a2enmod dav_svn && \
@@ -24,3 +26,5 @@ RUN set -e && \
 
 COPY ./docker-entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+WORKDIR ${SVNROOT}
