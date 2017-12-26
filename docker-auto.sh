@@ -50,6 +50,7 @@ echo "  down            Stop the services"
 echo "  ps              Show the status of the services"
 echo "  logs            Follow the logs on console"
 echo "  login           Log in to a Docker registry"
+echo "  info            SVN Info"
 echo "  remove-all      Remove all containers"
 echo "  stop-all        Stop all containers running"
 echo "  create-user     Create a user-password pair to use inside the password file"
@@ -103,6 +104,11 @@ elif [ "$1" == "remove-all" ]; then
 elif [ "$1" == "logs" ]; then
     shift
     docker-compose $CONF_ARG logs -f --tail 200 "$@"
+    exit 0
+
+elif [ "$1" == "info" ]; then
+    shift
+    docker-compose $CONF_ARG run svn svn info file:///mnt/svn/repos
     exit 0
 
 elif [ "$1" == "create-user" ]; then
