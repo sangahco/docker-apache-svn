@@ -117,9 +117,9 @@ elif [ "$1" == "create-user" ]; then
         exit 1
     fi
     shift
-    export BASIC_USER=$1
-    export BASIC_PASSWORD=$2
-    docker-compose -f docker-compose-htpasswd.yml run htpasswd
+    #export BASIC_USER=$1
+    #export BASIC_PASSWORD=$2
+    docker-compose -f docker-compose-htpasswd.yml run htpasswd $1 $2
     exit 0
 fi
 
