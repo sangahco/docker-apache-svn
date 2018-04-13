@@ -10,7 +10,11 @@ RUN set -e && \
     # installing required packages
     apt-get update && apt-get install -y \
         subversion \
-        libapache2-mod-svn && \
+        libapache2-mod-svn \
+        libhttp-message-perl \
+        libwww-perl \
+        libjson-perl \
+        curl && \
     mkdir -p ${SVNROOT} && \
     cp /usr/local/src/svn.conf /etc/apache2/sites-available/svn.conf && \
     cp /usr/local/src/.htaccess /etc/apache2/.htaccess && \
