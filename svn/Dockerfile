@@ -14,6 +14,7 @@ RUN set -e && \
         libhttp-message-perl \
         libwww-perl \
         libjson-perl \
+        locales \
         curl && \
     mkdir -p ${SVNROOT} && \
     cp /usr/local/src/svn.conf /etc/apache2/sites-available/svn.conf && \
@@ -23,6 +24,11 @@ RUN set -e && \
     /usr/sbin/a2dismod mpm_event && \
     /usr/sbin/a2enmod mpm_worker && \
     /usr/sbin/a2ensite svn && \
+    # locale setup
+    sed -i -e 's/# ko_KR.UTF-8 UTF-8/ko_KR.UTF-8 UTF-8/' /etc/locale.gen && \
+    echo 'LANG="ko_KR.UTF-8"'>/etc/default/locale && \
+    dpkg-reconfigure --frontend=noninteractive locales && \
+    update-locale LANG=ko_KR.UTF-8 && \
     # cleaning
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/* && \
