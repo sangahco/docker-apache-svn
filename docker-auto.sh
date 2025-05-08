@@ -112,8 +112,8 @@ elif [ "$1" == "info" ]; then
     exit 0
 
 elif [ "$1" == "create-user" ]; then
-    if [ $# -lt 3 ]; then
-        echo "Usage:  $(basename "$0") create-user [USER] [PASSWORD]"
+    if [ $# -lt 2 ]; then
+        echo "Usage:  $(basename "$0") create-user [USER]"
         exit 1
     fi
     shift
