@@ -6,7 +6,6 @@ COPY . /usr/local/src/
 ENV SVNROOT=/mnt/svn
 
 RUN set -e && \
-
     # installing required packages
     apt-get update && apt-get install --force-yes -y \
         subversion \
