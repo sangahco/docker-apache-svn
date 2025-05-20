@@ -8,7 +8,7 @@ ENV SVNROOT=/mnt/svn
 RUN set -e && \
 
     # installing required packages
-    apt-get update && apt-get install -y \
+    apt-get update && apt-get install --force-yes -y \
         subversion \
         libapache2-mod-svn \
         libhttp-message-perl \
