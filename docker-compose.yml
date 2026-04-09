@@ -8,6 +8,7 @@ services:
     - ${SVN_ROOT_FOLDER}:/mnt/svn/
     - ${SVN_HTPASSWD_PATH}:/etc/apache2/.htaccess:ro
     - ${SVN_ACCESS_FILE}:/etc/apache2/.svnaccess:ro
+    - ./svn/svn.conf:/etc/apache2/sites-available/svn.conf:ro
     ports:
     - "${HTTP_PORT}:80"
     logging: 
